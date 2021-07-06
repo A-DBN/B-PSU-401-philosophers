@@ -11,7 +11,6 @@ SRC		=	src/main.c \
 			src/init_threads.c \
 			src/tasks.c	\
 			src/chopsticks.c \
-			src/note.c
 
 OBJ		=	$(SRC:.c=.o)
 

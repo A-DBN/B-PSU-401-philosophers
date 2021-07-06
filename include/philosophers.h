@@ -20,7 +20,11 @@
 
 #pragma once
 
-static pthread_mutex_t chopstick_mut;
+typedef enum state_s {
+    EAT,
+    THINK,
+    REST
+} state_t;
 
 typedef struct args_s {
     int nb_philo;
@@ -30,13 +34,13 @@ typedef struct args_s {
 
 typedef struct philo_s {
     int id;
+    state_t state;
     int time_eat;
-    bool chopstick;
+    pthread_mutex_t chopstick;
     struct philo_s *next;
-    args_t *args;
 } philo_t;
 
-philo_t *create_table(args_t *args);
+philo_t *create_table(args_t *args);    
 int create_threads(philo_t *philo, args_t *args);
 
 void *start_action();
@@ -47,6 +51,7 @@ void rest(philo_t *philo);
 
 void take_chopstick(philo_t *philo);
 void release_chopstick(philo_t *philo);
+void wait_tasks(philo_t *philo);
 
 int write_in_file(char *str, int id);
 
