@@ -25,11 +25,11 @@ $(NAME):	$(OBJ)
 			$(GCC) -o $(NAME) $(OBJ) $(CFLAGS)
 
 clean:
-			rm -f $(OBJ)
+			@rm -f $(OBJ)
 
 fclean:			clean
-			rm -f $(NAME)
-			rm -f vgcore.*
+			@rm -f $(NAME)
+			@rm -f vgcore.*
 
 re:			fclean all
 

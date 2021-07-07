@@ -1,3 +1,8 @@
+if [[ ! -e ../philo ]]
+then
+    cd .. && make && cd tests
+fi
+
 testr1=$(../philo -p)
 r1=$(echo $?)
 
@@ -167,6 +172,4 @@ else
     echo -e "\nPassed : \033[33m$ok\033[0m, Total : \033[32m$Total\033[0m"
 fi
 
-#echo -"=============Test Unitaires============="
-
-#./test
+cd .. && make fclean && cd tests
