@@ -9,8 +9,6 @@
 
 void end_philo(philo_t *philo)
 {
-        //if (philo->args->write_file == 1)
-          //  write_in_file("Philosopher has ended\n", philo->id);
     printf("Philosopher n°%i has ended !\n", philo->id);
     release_chopstick(philo);
     pthread_exit(NULL);
@@ -71,11 +69,16 @@ void eat(philo_t *philo)
 
 void rest(philo_t *philo)
 {
+    int next_state = rand() % 2 + 1;
+
     philo->state = REST;
     printf("Philosopher n°%i is now resting !\n", philo->id);
     sleep(10);
     printf("Philosopher n°%i wake up\n", philo->id);
-    think(philo);
+    if (next_state == 1)
+        think(philo);
+    else
+        eat(philo);
 }
 
 void *start_action(philo_t *philo)

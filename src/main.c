@@ -33,12 +33,30 @@ int check_args(int ac, char **av, args_t *args)
         case 'h':
             usage();
             return 1;
-        //case 'w':
-          //  args->write_file = 1; break;
         case '?':
             usage();
             return 84;
         }
+    }
+    return 0;
+}
+
+int check_overflow(args_t *args)
+{
+    if (args->nb_philo < 0) {
+        if (args->nb_philo < INT_MIN)
+            return 84;
+    } else if (args->nb_philo > 0) {
+        if (args->nb_philo > INT_MAX)
+            return 84;
+    }
+
+    if (args->max_eat < 0) {
+        if (args->max_eat < INT_MIN)
+            return 84;
+    } else if (args->max_eat > 0) {
+        if (args->max_eat > INT_MAX)
+            return 84;
     }
     return 0;
 }
@@ -55,7 +73,7 @@ int main(int ac, char **av)
     if (args == NULL)
         return -1;
     res = check_args(ac, av, args);
-    if (res == 84)
+    if (res == 84 || check_overflow(args) == 84)
         return 84;
     if (res == 1)
         return 0;

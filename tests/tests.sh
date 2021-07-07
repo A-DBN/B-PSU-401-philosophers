@@ -1,7 +1,32 @@
 if [[ ! -e ../philo ]]
 then
-    cd .. && make && cd tests
+    cd .. && make >> /dev/null && cd tests
 fi
+
+echo -e "\033[1mAfficher l'help du philo ? (yes/no)\033[0m"
+
+read helps
+
+if [[ $helps == "yes" ]]
+then
+    echo -e "\n"
+    ../philo --help
+    exit 0
+fi
+
+echo -e "\033[1mGive me a number of philosopher :\033[0m"
+
+read nb_philo
+
+echo -e "\033[1mGive a number to limite philosopher eat action :\033[0m"
+
+read nb_eat
+
+echo -e "\033[1mAfficher les tests fonctionnels ? (yes/no)\033[0m"
+
+read tests
+
+clear
 
 testr1=$(../philo -p)
 r1=$(echo $?)
@@ -172,4 +197,30 @@ else
     echo -e "\nPassed : \033[33m$ok\033[0m, Total : \033[32m$Total\033[0m"
 fi
 
-cd .. && make fclean && cd tests
+if [[ $tests == "no" ]]
+then
+    clear
+fi
+
+echo -e "\n================== Lancement Programme ==================\n"
+
+echo -e "\033[32mStarting the project in 2 seconds with data \033[31mPhilosophers = $nb_philo\033[32m and \033[31mEat Time = $nb_eat\033[0m > \033[33m./philo -e $nb_eat -p $nb_philo\n\033[0m"
+
+sleep 2
+
+if [[ $ok == $Total ]]
+then
+    ../philo -e $nb_eat -p $nb_philo
+    echo -e "\033[32mCa manque de genepi sur la table !\033[0m\n"
+else
+    echo -e "\033[31mImpossible de lancer le programme, les tests de base ne sont pas tous valides !\033[0m\n"
+fi
+
+echo -e "\033[1mNettoyer le dossier ? (yes/no)\033[0m"
+
+read cleans
+
+if [[ $cleans == "yes" ]]
+then
+    cd .. && make fclean
+fi
