@@ -53,6 +53,4 @@ void take_chopstick(philo_t *philo);
 void release_chopstick(philo_t *philo);
 void wait_tasks(philo_t *philo);
 
-int write_in_file(char *str, int id);
-
 #endif /* !PHILOSOPHERS_H_ */

@@ -33,8 +33,7 @@ let "Total = 0"
 
 #Début des tests
 
-echo -e "================== Tests Fonctionnels ==================\n"
-
+echo -e "================== Tests Fonctionnels =================="
 if [[ "$r1" == 84 ]]
 then
     echo -e "Test 1 (.../philo -p): \033[32mOK\033[0m"
@@ -160,12 +159,12 @@ fi
 
 if [[ $ok == 0 ]]
 then
-    echo -e "Passed : \033[31m$ok\033[0m, Total : \033[32m$Total\033[0m"
+    echo -e "\nPassed : \033[31m$ok\033[0m, Total : \033[32m$Total\033[0m"
 elif [[ $ok == $Total ]]
 then
-    echo -e "Passed : \033[32m$ok\033[0m, Total : \033[32m$Total\033[0m"
+    echo -e "\nPassed : \033[32m$ok\033[0m, Total : \033[32m$Total\033[0m"
 else
-    echo -e "Passed : \033[33m$ok\033[0m, Total : \033[32m$Total\033[0m"
+    echo -e "\nPassed : \033[33m$ok\033[0m, Total : \033[32m$Total\033[0m"
 fi
 
 #echo -"=============Test Unitaires============="

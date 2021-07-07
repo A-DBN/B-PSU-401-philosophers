@@ -33,11 +33,8 @@ int create_threads(philo_t *philo, args_t *args)
         }
     }
     for (int i = 0; i < args->nb_philo; i++) {
-        printf("%i\n", i);
         if (pthread_join(table[i], NULL) != 0)
             fprintf(stderr, "ERROR: Thread join n°%i\n", i);
-        else
-            printf("non");
     }
     return 0;
 }
