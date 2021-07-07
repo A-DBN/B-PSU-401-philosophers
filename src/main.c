@@ -26,7 +26,6 @@ int check_args(int ac, char **av, args_t *args)
         switch(c) {
         case 'p':
             args->nb_philo = atoi(optarg);
-            printf("%i\n", args->nb_philo);
             break;
         case 'e':
             args->max_eat = atoi(optarg);
